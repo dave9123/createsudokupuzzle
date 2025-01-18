@@ -1,0 +1,30 @@
+{
+  "name": "sudokupuzzle",
+  "version": "0.0.0",
+  "description": "Generate and solve sudoku puzzles",
+  "keywords": [
+    "sudoku",
+    "puzzle",
+    "puzzles",
+    "puzzlegenerator",
+    "puzzle-generator",
+    "sudoku-puzzle",
+    "puzzlesolver",
+    "puzzle-solver"
+  ],
+  "homepage": "https://github.com/dave9123/sudokuPuzzle#readme",
+  "bugs": {
+    "url": "https://github.com/dave9123/sudokuPuzzle/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dave9123/sudokuPuzzle.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "dave9123",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

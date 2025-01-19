@@ -165,4 +165,4 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
     return gridCopy;
 }
 
-export { findFirstEmpty, findAllEmpty, generate, solve, validate, validatePlacement };
+export default { findFirstEmpty, findAllEmpty, generate, solve, validate, validatePlacement };

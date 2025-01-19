@@ -12,12 +12,12 @@ function isUnique(arr: Array<number>): boolean {
 }
 
 /**
- * Find the first empty cell in a Sudoku grid.
+ * Finds the first empty cell in a Sudoku grid.
  * @param grid - The Sudoku grid.
- * @returns The row and column indices of the first empty cell, or false if no empty cells are found.
+ * @returns The row and column indices of the first empty cell, or an empty array if no empty cells are found.
  */
 
-function findFirstEmpty(grid: Array<Array<number>>): [number, number] | false {
+function findFirstEmpty(grid: Array<Array<number>>): [number, number] | [] {
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             if (grid[row][col] === 0) {
@@ -25,7 +25,25 @@ function findFirstEmpty(grid: Array<Array<number>>): [number, number] | false {
             }
         }
     }
-    return false;
+    return [];
+}
+
+/**
+ * Finds all empty cells in a Sudoku grid.
+ * @param grid - The Sudoku grid.
+ * @returns The row and column indices of all empty cells, or an empty array if no empty cells are found.
+ */
+
+function findAllEmpty(grid: Array<Array<number>>): [number, number][] {
+    const emptyCells: [number, number][] = [];
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
+            if (grid[row][col] === 0) {
+                emptyCells.push([row, col]);
+            }
+        }
+    }
+    return emptyCells;
 }
 
 /**
@@ -85,7 +103,7 @@ function generate(blank: number = 0): Array<Array<number>> {
 
     function fillGrid(grid: Array<Array<number>>): boolean {
         const emptyCell = findFirstEmpty(grid);
-        if (!emptyCell) return true;
+        if (emptyCell.length === 0) return true;
 
         const [row, col] = emptyCell;
         shuffle(numbers);
@@ -126,7 +144,7 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
 
     function solveHelper(grid: Array<Array<number>>): boolean {
         const emptyCell = findFirstEmpty(grid);
-        if (!emptyCell) return true;
+        if (emptyCell.length === 0) return true;
 
         const [row, col] = emptyCell;
         for (let num = 1; num <= 9; num++) {
@@ -147,4 +165,4 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
     return gridCopy;
 }
 
-export { findFirstEmpty, generate, solve, validate, validatePlacement };
+export { findFirstEmpty, findAllEmpty, generate, solve, validate, validatePlacement };

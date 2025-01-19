@@ -1,17 +1,16 @@
-import { generate, solve, validate } from '../src/index';
+import { generate, solve, validate, findFirstEmpty, findAllEmpty } from '../src/index';
 
 describe('Sudoku Functions', () => {
     test('should generate a valid Sudoku grid', () => {
         const puzzle = generate(20);
         expect(puzzle).toHaveLength(9);
         expect(puzzle.every(row => row.length === 9)).toBe(true);
+        expect(puzzle.flat().every(num => num >= 0 && num <= 9)).toBe(true);
         expect(validate(puzzle, true)).toBe(true);
     });
 
     test('should solve a valid Sudoku puzzle', () => {
-        const puzzle = generate(20);
-        const solved = solve(puzzle);
-        expect(validate(solved)).toBe(true);
+        expect(validate(solve(generate(20)))).toBe(true);
     });
 
     test('should validate a Sudoku grid correctly', () => {
@@ -36,5 +35,13 @@ describe('Sudoku Functions', () => {
             [6, 8, 4, 2, 5, 7, 0, 0, 0],
             [7, 9, 1, 0, 3, 4, 6, 0, 0]
         ])).toThrow(Error);
+    });
+
+    test("should find all empty cells correctly", () => {
+        expect(findAllEmpty(generate(5)).length).toBe(5);
+    });
+
+    test("should find the first empty cell correctly", () => {
+        expect(findFirstEmpty(generate(0)).length).toBe(0);
     });
 });

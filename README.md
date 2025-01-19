@@ -11,6 +11,7 @@ Generate, validate, and solve Sudoku puzzles easily!
 -   [Installation](#installation)
 -   [Functions](#functions)
     -   [findFirstEmpty](#findfirstempty)
+    -   [findAllEpty](#findallempty)
     -   [validatePlacement](#validateplacement)
     -   [validate](#validate)
     -   [generate](#generate)
@@ -21,7 +22,13 @@ Generate, validate, and solve Sudoku puzzles easily!
 
 ### Installation
 
-This library is written in TypeScript. Add the functions to your project by copying the code or importing them into your project.
+NPM <code>npm install createsudokupuzzle</code>
+
+Yarn <code>yarn add createsudokupuzzle</code>
+
+Bun <code>bun add createsudokupuzzle</code>
+
+PNPM <code>pnpm add createsudokupuzzle</code>
 
 ---
 
@@ -30,7 +37,7 @@ This library is written in TypeScript. Add the functions to your project by copy
 #### `findFirstEmpty`
 
 ```ts
-function findFirstEmpty(grid: Array<Array<number>>): [number, number] | false;
+function findFirstEmpty(grid: Array<Array<number>>): [number, number] | [];
 ```
 
 Finds the first empty cell in a Sudoku grid.
@@ -46,12 +53,58 @@ Finds the first empty cell in a Sudoku grid.
 
 -   **Example**:
     ```ts
+    import sudoku from "createsudokupuzzle";
+
     const grid = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        // more rows...
+        [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
+        [ 9, 6, 0, 3, 8, 0, 1, 0, 0 ],
+        [ 3, 8, 2, 6, 7, 1, 5, 4, 0 ],
+        [ 1, 7, 6, 0, 3, 0, 2, 5, 8 ],
+        [ 4, 5, 9, 1, 2, 0, 3, 0, 7 ],
+        [ 0, 3, 0, 0, 5, 0, 9, 1, 4 ],
+        [ 6, 9, 5, 8, 1, 7, 4, 2, 3 ],
+        [ 8, 0, 3, 0, 0, 4, 7, 9, 0 ],
+        [ 7, 4, 1, 2, 9, 3, 6, 8, 5 ]
     ];
-    console.log(findEmpty(grid)); // [0, 2]
+
+    console.log(sudoku.findFirstEmpty(grid)); // [ 0, 3 ]
+    ```
+
+---
+
+#### `findAllEmpty`
+
+```ts
+function findAllEmpty(grid: Array<Array<number>>): [number, number][];
+```
+
+Finds all empty cells in a Sudoku grid.
+
+-   **Parameters**:
+
+    -   `grid`: A 9x9 Sudoku grid represented as a 2D array.
+
+-   **Returns**:
+
+    -   An array of tuples [row, col], each representing the coordinates of an empty cell or an empty array if no empty cells are found.
+
+-   **Example**:
+    ```ts
+    import sudoku from "createsudokupuzzle";
+
+    const grid = [
+        [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
+        [ 9, 6, 0, 3, 8, 0, 1, 0, 0 ],
+        [ 3, 8, 2, 6, 7, 1, 5, 4, 0 ],
+        [ 1, 7, 6, 0, 3, 0, 2, 5, 8 ],
+        [ 4, 5, 9, 1, 2, 0, 3, 0, 7 ],
+        [ 0, 3, 0, 0, 5, 0, 9, 1, 4 ],
+        [ 6, 9, 5, 8, 1, 7, 4, 2, 3 ],
+        [ 8, 0, 3, 0, 0, 4, 7, 9, 0 ],
+        [ 7, 4, 1, 2, 9, 3, 6, 8, 5 ]
+    ];
+
+    console.log(sudoku.findAllEmpty(grid)); // [[ 0, 3 ], [ 0, 5 ], [ 0, 6 ], [ 1, 2 ], [ 1, 5 ], [ 1, 7 ], [ 1, 8 ], [ 2, 8 ], [ 3, 3 ], [ 3, 5 ], [ 4, 5 ], [ 4, 7 ], [ 5, 0 ], [ 5, 2 ], [ 5, 3 ], [ 5, 5 ], [ 7, 1 ], [ 7, 3 ], [ 7, 4 ], [ 7, 8 ]]
     ```
 
 ---
@@ -83,12 +136,21 @@ Checks if placing a number in a cell is valid according to Sudoku rules.
 
 -   **Example**:
     ```ts
+    import sudoku from "createsudokupuzzle";
+
     const grid = [
-        [5, 3, 4, 6, 7, 8, 9, 1, 2],
-        [6, 7, 2, 1, 9, 5, 3, 4, 8],
-        // more rows...
-    ];
-    console.log(validatePlacement(grid, 0, 2, 3)); // false
+        [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
+        [ 9, 6, 0, 3, 8, 0, 1, 0, 0 ],
+        [ 3, 8, 2, 6, 7, 1, 5, 4, 0 ],
+        [ 1, 7, 6, 0, 3, 0, 2, 5, 8 ],
+        [ 4, 5, 9, 1, 2, 0, 3, 0, 7 ],
+        [ 0, 3, 0, 0, 5, 0, 9, 1, 4 ],
+        [ 6, 9, 5, 8, 1, 7, 4, 2, 3 ],
+        [ 8, 0, 3, 0, 0, 4, 7, 9, 0 ],
+        [ 7, 4, 1, 2, 9, 3, 6, 8, 5 ]
+    ]
+
+    console.log(sudoku.validatePlacement(puzzle, 0, 0, 1)); // false
     ```
 
 ---
@@ -116,20 +178,21 @@ Validates if a Sudoku grid satisfies Sudoku rules.
 
 -   **Example**:
     ```ts
+    import sudoku from "createsudokupuzzle";
+
     const grid = [
-        [
-            [5, 3, 2, 6, 1, 4, 7, 8, 9],
-            [6, 4, 9, 7, 8, 5, 1, 2, 3],
-            [7, 8, 1, 3, 9, 2, 5, 6, 4],
-            [9, 6, 5, 4, 7, 3, 2, 1, 8],
-            [1, 2, 4, 8, 6, 9, 3, 5, 7],
-            [3, 7, 8, 5, 2, 1, 9, 4, 6],
-            [8, 5, 7, 1, 3, 6, 4, 9, 2],
-            [2, 1, 3, 9, 4, 8, 6, 7, 5],
-            [4, 9, 6, 2, 5, 7, 8, 3, 1],
-        ],
-    ];
-    console.log(validate(grid)); // true
+        [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
+        [ 9, 6, 0, 3, 8, 0, 1, 0, 0 ],
+        [ 3, 8, 2, 6, 7, 1, 5, 4, 0 ],
+        [ 1, 7, 6, 0, 3, 0, 2, 5, 8 ],
+        [ 4, 5, 9, 1, 2, 0, 3, 0, 7 ],
+        [ 0, 3, 0, 0, 5, 0, 9, 1, 4 ],
+        [ 6, 9, 5, 8, 1, 7, 4, 2, 3 ],
+        [ 8, 0, 3, 0, 0, 4, 7, 9, 0 ],
+        [ 7, 4, 1, 2, 9, 3, 6, 8, 5 ]
+    ]
+
+    console.log(sudoku.validate(puzzle, true)); // true
     ```
 
 ---
@@ -152,8 +215,11 @@ Generates a Sudoku puzzle with a specified number of blank cells.
 
 -   **Example**:
     ```ts
-    const puzzle = generate(30);
-    console.log(puzzle); // A grid with 30 blank cells
+    import sudoku from "createsudokupuzzle";
+
+    const grid = sudoku.generate(30);
+
+    console.log(grid); // [[6, 5, 9, 8, 0, 0, 2, 3, 7], [4, 2, 0, 0, 0, 7, 8, 0, 9], [0, 8, 3, 9, 6, 2, 0, 0, 5], [2, 4, 0, 7, 3, 9, 0, 1, 6], [0, 0, 0, 6, 0, 4, 0, 2, 8], [3, 1, 6, 2, 8, 0, 9, 7, 4], [5, 0, 7, 0, 0, 6, 0, 0, 2], [0, 0, 0, 5, 2, 0, 7, 0, 1], [0, 0, 2, 4, 7, 8, 6, 0, 3]];
     ```
 
 ---
@@ -176,12 +242,21 @@ Solves a Sudoku puzzle using backtracking.
 
 -   **Example**:
     ```ts
-    const puzzle = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        // more rows...
+    import sudoku from "createsudokupuzzle";
+
+    const grid = [
+        [ 0, 9, 4, 0, 5, 6, 3, 0, 2 ],
+        [ 1, 2, 3, 0, 8, 0, 5, 0, 0 ],
+        [ 0, 0, 8, 2, 4, 3, 9, 1, 7 ],
+        [ 4, 0, 9, 5, 1, 2, 0, 3, 6 ],
+        [ 2, 7, 5, 0, 6, 0, 1, 4, 0 ],
+        [ 6, 0, 0, 8, 7, 4, 2, 0, 5 ],
+        [ 8, 1, 7, 4, 3, 5, 6, 2, 9 ],
+        [ 9, 4, 0, 7, 2, 1, 8, 5, 3 ],
+        [ 3, 5, 2, 6, 9, 8, 0, 7, 0 ]
     ];
-    const solved = solve(puzzle);
+
+    const solved = suodku.solve(puzzle);
     console.log(solved);
     ```
 
@@ -190,7 +265,7 @@ Solves a Sudoku puzzle using backtracking.
 ### Examples
 
 ```ts
-import { generate, solve, validate, validatePlacement } from "createSudoku";
+import { generate, solve, validate, validatePlacement } from "createsudokupuzzle";
 
 // Generate a puzzle with 40 blanks
 const puzzle = generate(40);
@@ -202,6 +277,9 @@ console.log("Is the puzzle valid?", validate(puzzle));
 // Solve the puzzle
 const solution = solve(puzzle);
 console.log("Solved Puzzle:", solution);
+
+// Validate the solved puzzle
+console.log("Is the solved puzzle valid?", validate(solution));
 ```
 
 ---

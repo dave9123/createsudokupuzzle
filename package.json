@@ -1,6 +1,6 @@
 {
     "name": "createsudokupuzzle",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "Generate and solve sudoku puzzles easily!",
     "keywords": [
         "sudoku",
@@ -22,7 +22,7 @@
     },
     "license": "MIT",
     "author": "dave9123",
-    "main": "dist/index.cjs",
+    "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {

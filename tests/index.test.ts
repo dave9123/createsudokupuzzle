@@ -1,30 +1,30 @@
-import { generate, solve, validate, findFirstEmpty, findAllEmpty } from '../src/index';
+import sudoku from '../src/index';
 
 describe('Sudoku Functions', () => {
     test('should generate a valid Sudoku grid', () => {
-        const puzzle = generate(20);
+        const puzzle = sudoku.generate(20);
         expect(puzzle).toHaveLength(9);
         expect(puzzle.every(row => row.length === 9)).toBe(true);
         expect(puzzle.flat().every(num => num >= 0 && num <= 9)).toBe(true);
-        expect(validate(puzzle, true)).toBe(true);
+        expect(sudoku.validate(puzzle, true)).toBe(true);
     });
 
     test('should solve a valid Sudoku puzzle', () => {
-        expect(validate(solve(generate(20)))).toBe(true);
+        expect(sudoku.validate(sudoku.solve(sudoku.generate(20)))).toBe(true);
     });
 
     test('should validate a Sudoku grid correctly', () => {
-        const validPuzzle = generate(0);
-        expect(validate(validPuzzle)).toBe(true);
+        const validPuzzle = sudoku.generate(0);
+        expect(sudoku.validate(validPuzzle)).toBe(true);
 
         // Invalid grid example (two of the same number in the same row)
         const invalidPuzzle = [...validPuzzle];
         invalidPuzzle[0][1] = validPuzzle[0][0];
-        expect(validate(invalidPuzzle)).toBe(false);
+        expect(sudoku.validate(invalidPuzzle)).toBe(false);
     });
 
     test("should throw an error if the puzzle is unsolvable", () => {
-        expect(() => solve([
+        expect(() => sudoku.solve([
             [5, 5, 6, 8, 4, 9, 7, 3, 2],
             [3, 0, 7, 6, 0, 5, 0, 0, 0],
             [8, 0, 9, 7, 0, 0, 0, 6, 5],
@@ -38,10 +38,10 @@ describe('Sudoku Functions', () => {
     });
 
     test("should find all empty cells correctly", () => {
-        expect(findAllEmpty(generate(5)).length).toBe(5);
+        expect(sudoku.findAllEmpty(sudoku.generate(5)).length).toBe(5);
     });
 
     test("should find the first empty cell correctly", () => {
-        expect(findFirstEmpty(generate(0)).length).toBe(0);
+        expect(sudoku.findFirstEmpty(sudoku.generate(0)).length).toBe(0);
     });
 });

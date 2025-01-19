@@ -12,13 +12,13 @@
         "create-sudoku",
         "sudoku-creator"
     ],
-    "homepage": "https://github.com/dave9123/createSudoku#readme",
+    "homepage": "https://github.com/dave9123/createsudokupuzzle#readme",
     "bugs": {
-        "url": "https://github.com/dave9123/createSudoku/issues"
+        "url": "https://github.com/dave9123/createsudokupuzzle/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dave9123/createSudoku.git"
+        "url": "git+https://github.com/dave9123/createsudokupuzzle.git"
     },
     "license": "MIT",
     "author": "dave9123",
@@ -49,7 +49,7 @@
         "node": ">=14.0.0"
     },
     "scripts": {
-        "build": "tsup src/index.ts --format esm,cjs --dts --minify --out-dir dist",
+        "build": "tsup src/index.ts --format esm,cjs --dts --out-dir dist",
         "test": "jest",
         "prepare": "npm run build",
         "publish": "npm run prepare && npm publish --access public"

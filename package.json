@@ -1,5 +1,5 @@
 {
-    "name": "createSudoku",
+    "name": "createsudokupuzzle",
     "version": "0.0.1",
     "description": "Generate and solve sudoku puzzles easily!",
     "keywords": [
@@ -20,7 +20,7 @@
         "type": "git",
         "url": "git+https://github.com/dave9123/createSudoku.git"
     },
-    "license": "GPLv3",
+    "license": "MIT",
     "author": "dave9123",
     "main": "dist/index.cjs",
     "module": "dist/index.js",

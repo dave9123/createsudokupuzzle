@@ -1,6 +1,8 @@
-# createSudoku
+# createsudokupuzzle
 
-<img src="https://github.com/dave9123/createSudoku/actions/workflows/ci.yml/badge.svg" alt="Build and Test Workflow" />
+[![Workflow](https://github.com/dave9123/createsudokupuzzle/actions/workflows/ci.yml/badge.svg)]
+[![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)]()
+[![NPM Version](https://img.shields.io/npm/l/createsudokupuzzle.svg?style=flat)](https://github.com/dave9123/createsudokupuzzle/blob/main/LICENSE)
 
 Generate, validate, and solve Sudoku puzzles easily!
 

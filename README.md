@@ -389,7 +389,7 @@ console.log("Solved Puzzle:", solution);
 console.log("Is the solved puzzle valid?", validate(solution));
 
 // Validate move
-console.log("Is setting [0][0] to 1 valid?", validatePlacement(solution, 0, 0, 1))
+console.log("Is setting [0][0] to 1 valid?", validatePlacement(solution, 0, 0, 1));
 ```
 JS:
 ```js

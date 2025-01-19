@@ -48,8 +48,7 @@
     },
     "scripts": {
         "build": "tsup src/index.ts --format esm,cjs --dts --out-dir dist",
-        "test": "jest",
-        "publish": "npm run build && npm publish --access public"
+        "test": "jest"
     },
     "publishConfig": {
         "access": "public"
@@ -61,5 +60,8 @@
         "tsup": "^8.3.5",
         "tsx": "^4.19.2",
         "typescript": "^5.7.3"
+    },
+    "dependencies": {
+        "createsudokupuzzle": "^0.0.7"
     }
 }

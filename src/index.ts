@@ -1,8 +1,3 @@
-/**
- * Shuffles an array in place using the Fisher-Yates algorithm.
- * @param array - The array to shuffle.
- * @returns The shuffled array.
- */
 function shuffle<T>(array: Array<T>): Array<T> {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -11,21 +6,11 @@ function shuffle<T>(array: Array<T>): Array<T> {
     return array;
 }
 
-/**
- * Checks if an array contains unique numbers, ignoring zeros.
- * @param arr - The array to check.
- * @returns True if the array is unique, false otherwise.
- */
 function isUnique(arr: Array<number>): boolean {
     const nums = arr.filter((num) => num > 0);
     return new Set(nums).size === nums.length;
 }
 
-/**
- * Finds the first empty cell in the Sudoku grid.
- * @param grid - The Sudoku grid.
- * @returns An array [row, col] if an empty cell is found, or false otherwise.
- */
 function findEmpty(grid: Array<Array<number>>): [number, number] | false {
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
@@ -45,7 +30,7 @@ function findEmpty(grid: Array<Array<number>>): [number, number] | false {
  * @param num - The number to place.
  * @returns True if valid, false otherwise.
  */
-function isValid(grid: Array<Array<number>>, row: number, col: number, num: number): boolean {
+function validatePlacement(grid: Array<Array<number>>, row: number, col: number, num: number): boolean {
     const boxRow = Math.floor(row / 3) * 3;
     const boxCol = Math.floor(col / 3) * 3;
     return !grid[row].includes(num) &&
@@ -99,7 +84,7 @@ function generate(blank: number = 0): Array<Array<number>> {
         const [row, col] = emptyCell;
         shuffle(numbers);
         for (const num of numbers) {
-            if (isValid(grid, row, col, num)) {
+            if (validatePlacement(grid, row, col, num)) {
                 grid[row][col] = num;
                 if (fillGrid(grid)) return true;
                 grid[row][col] = 0;
@@ -139,7 +124,7 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
 
         const [row, col] = emptyCell;
         for (let num = 1; num <= 9; num++) {
-            if (isValid(grid, row, col, num)) {
+            if (validatePlacement(grid, row, col, num)) {
                 grid[row][col] = num;
                 if (solveHelper(grid)) return true;
                 grid[row][col] = 0;
@@ -156,4 +141,4 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
     return gridCopy;
 }
 
-export { generate, solve, validate };
+export { generate, solve, validate, validatePlacement };

@@ -54,7 +54,7 @@ Finds the first empty cell in a Sudoku grid.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = [
         [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
@@ -91,7 +91,7 @@ Finds all empty cells in a Sudoku grid.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = [
         [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
@@ -137,7 +137,7 @@ Checks if placing a number in a cell is valid according to Sudoku rules.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = [
         [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
@@ -179,7 +179,7 @@ Validates if a Sudoku grid satisfies Sudoku rules.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = [
         [ 5, 1, 7, 0, 4, 0, 0, 3, 6 ],
@@ -216,7 +216,7 @@ Generates a Sudoku puzzle with a specified number of blank cells.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = sudoku.generate(30);
 
@@ -243,7 +243,7 @@ Solves a Sudoku puzzle using backtracking.
 
 -   **Example**:
     ```ts
-    import sudoku from "createsudokupuzzle";
+    import * as sudoku from "createsudokupuzzle";
 
     const grid = [
         [ 0, 9, 4, 0, 5, 6, 3, 0, 2 ],

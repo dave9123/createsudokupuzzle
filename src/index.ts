@@ -17,7 +17,7 @@ function isUnique(arr: Array<number>): boolean {
  * @returns The row and column indices of the first empty cell, or an empty array if no empty cells are found.
  */
 
-function findFirstEmpty(grid: Array<Array<number>>): [number, number] | [] {
+export function findFirstEmpty(grid: Array<Array<number>>): [number, number] | [] {
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             if (grid[row][col] === 0) {
@@ -34,7 +34,7 @@ function findFirstEmpty(grid: Array<Array<number>>): [number, number] | [] {
  * @returns The row and column indices of all empty cells, or an empty array if no empty cells are found.
  */
 
-function findAllEmpty(grid: Array<Array<number>>): [number, number][] {
+export function findAllEmpty(grid: Array<Array<number>>): [number, number][] {
     const emptyCells: [number, number][] = [];
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
@@ -54,7 +54,7 @@ function findAllEmpty(grid: Array<Array<number>>): [number, number][] {
  * @param num - The number to place.
  * @returns True if valid, false otherwise.
  */
-function validatePlacement(grid: Array<Array<number>>, row: number, col: number, num: number): boolean {
+export function validatePlacement(grid: Array<Array<number>>, row: number, col: number, num: number): boolean {
     const boxRow = Math.floor(row / 3) * 3;
     const boxCol = Math.floor(col / 3) * 3;
     return !grid[row].includes(num) &&
@@ -68,7 +68,7 @@ function validatePlacement(grid: Array<Array<number>>, row: number, col: number,
  * @param allowZero - Whether zeros are allowed in the grid, usually applicable to checking if a move is legal.
  * @returns True if valid, false otherwise.
  */
-function validate(puzzle: Array<Array<number>>, allowZero: boolean = false): boolean {
+export function validate(puzzle: Array<Array<number>>, allowZero: boolean = false): boolean {
     if (puzzle.length !== 9 || puzzle.some(row => row.length !== 9)) {
         throw new Error('Invalid puzzle size');
     }
@@ -93,7 +93,7 @@ function validate(puzzle: Array<Array<number>>, allowZero: boolean = false): boo
  * @param blank - The number of blank cells.
  * @returns The generated Sudoku grid.
  */
-function generate(blank: number = 0): Array<Array<number>> {
+export function generate(blank: number = 0): Array<Array<number>> {
     if (blank < 0 || blank > 81) {
         throw new Error('Invalid number of blanks');
     }
@@ -137,7 +137,7 @@ function generate(blank: number = 0): Array<Array<number>> {
  * @param puzzle - The Sudoku grid.
  * @returns The solved grid or throws an error if unsolvable.
  */
-function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
+export function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
     if (!validate(puzzle, true)) {
         throw new Error('Invalid puzzle');
     }
@@ -164,5 +164,3 @@ function solve(puzzle: Array<Array<number>>): Array<Array<number>> {
 
     return gridCopy;
 }
-
-export default { findFirstEmpty, findAllEmpty, generate, solve, validate, validatePlacement };

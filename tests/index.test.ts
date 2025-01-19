@@ -1,4 +1,4 @@
-import sudoku from '../src/index';
+import * as sudoku from '../src/index';
 
 describe('Sudoku Functions', () => {
     test('should generate a valid Sudoku grid', () => {

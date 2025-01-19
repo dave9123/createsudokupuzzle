@@ -1,6 +1,6 @@
 # createSudoku
 
-![Build and Test Workflow](https://github.com/dave9123/createSudoku/actions/workflows/ci.yml/badge.svg)
+<img src="https://github.com/dave9123/createSudoku/actions/workflows/ci.yml/badge.svg" alt="Build and Test Workflow" />
 
 Generate, validate, and solve Sudoku puzzles easily!
 

@@ -1,6 +1,6 @@
 {
     "name": "createsudokupuzzle",
-    "version": "0.0.3",
+    "version": "0.0.6",
     "description": "Generate and solve sudoku puzzles easily!",
     "keywords": [
         "sudoku",
@@ -22,7 +22,7 @@
     },
     "license": "MIT",
     "author": "dave9123",
-    "main": "dist/index.js",
+    "main": "index.ts",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {
@@ -40,6 +40,7 @@
     "type": "module",
     "files": [
         "dist",
+        "index.ts",
         "README.md",
         "LICENSE",
         "package.json",
@@ -49,10 +50,9 @@
         "node": ">=14.0.0"
     },
     "scripts": {
-        "build": "tsup src/index.ts --format esm,cjs --dts --out-dir dist",
+        "build": "tsup src/index.ts --format esm,cjs,iife --dts --out-dir dist",
         "test": "jest",
-        "prepare": "npm run build",
-        "publish": "npm run prepare && npm publish --access public"
+        "publish": "npm run build && npm publish --access public"
     },
     "publishConfig": {
         "access": "public"

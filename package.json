@@ -1,6 +1,6 @@
 {
     "name": "createsudokupuzzle",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Generate and solve sudoku puzzles easily!",
     "keywords": [
         "sudoku",

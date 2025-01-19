@@ -7,15 +7,18 @@
         "sudoku-generator",
         "sudoku-solver",
         "sudoku-puzzle",
-        "sudokupuzzle"
+        "sudokupuzzle",
+        "createSudoku",
+        "create-sudoku",
+        "sudoku-creator"
     ],
-    "homepage": "https://github.com/dave9123/sudokuPuzzle#readme",
+    "homepage": "https://github.com/dave9123/createSudoku#readme",
     "bugs": {
-        "url": "https://github.com/dave9123/sudokuPuzzle/issues"
+        "url": "https://github.com/dave9123/createSudoku/issues"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dave9123/sudokuPuzzle.git"
+        "url": "git+https://github.com/dave9123/createSudoku.git"
     },
     "license": "GPLv3",
     "author": "dave9123",

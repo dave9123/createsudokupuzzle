@@ -53,7 +53,7 @@ Finds the first empty cell in a Sudoku grid.
     -   `false` if no empty cells are found.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -71,7 +71,7 @@ Finds the first empty cell in a Sudoku grid.
 
     console.log(sudoku.findFirstEmpty(grid)); // [ 0, 3 ]
     ```
-    JS:
+    -   JS:
     ```js
     const sudoku = require("createsudokupuzzle");
 
@@ -109,7 +109,7 @@ Finds all empty cells in a Sudoku grid.
     -   An array of tuples [row, col], each representing the coordinates of an empty cell or an empty array if no empty cells are found.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -127,7 +127,7 @@ Finds all empty cells in a Sudoku grid.
 
     console.log(sudoku.findAllEmpty(grid)); // [[ 0, 3 ], [ 0, 5 ], [ 0, 6 ], [ 1, 2 ], [ 1, 5 ], [ 1, 7 ], [ 1, 8 ], [ 2, 8 ], [ 3, 3 ], [ 3, 5 ], [ 4, 5 ], [ 4, 7 ], [ 5, 0 ], [ 5, 2 ], [ 5, 3 ], [ 5, 5 ], [ 7, 1 ], [ 7, 3 ], [ 7, 4 ], [ 7, 8 ]]
     ```
-    JS:
+    -   JS:
     ```js
     const sudoku = require("createsudokupuzzle");
 
@@ -155,8 +155,9 @@ function validatePlacement(
     grid: Array<Array<number>>,
     row: number,
     col: number,
-    num: number
-): boolean;
+    num: number,
+    outputReason?: boolean
+): { valid: boolean, reason?: string } | boolean;
 ```
 
 Checks if placing a number in a cell is valid according to Sudoku rules.
@@ -167,14 +168,19 @@ Checks if placing a number in a cell is valid according to Sudoku rules.
     -   `row`: The row index where the number is to be placed.
     -   `col`: The column index where the number is to be placed.
     -   `num`: The number to place in the cell.
+    -   `outputReason` (optional): Whether to output the reason for invalid placement.
 
 -   **Returns**:
 
-    -   `true` if the placement is valid.
-    -   `false` otherwise.
+    -    If `outputReason` is `true`, returns an object with:
+        -   `valid`: `true` if the placement is valid, `false` otherwise.
+        -   `reason`: A string providing the reason if the placement is invalid.
+    - If `outputReason` is `false` or not provided, returns a boolean:     
+        -   `true` if the placement is valid.
+        -   `false` otherwise.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -192,7 +198,7 @@ Checks if placing a number in a cell is valid according to Sudoku rules.
 
     console.log(sudoku.validatePlacement(puzzle, 0, 0, 1)); // false
     ```
-    JS:
+    -   JS:
     ```ts
     const sudoku = require("createsudokupuzzle");
 
@@ -235,7 +241,7 @@ Validates if a Sudoku grid satisfies Sudoku rules.
     -   `false` otherwise.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -253,7 +259,7 @@ Validates if a Sudoku grid satisfies Sudoku rules.
 
     console.log(sudoku.validate(puzzle, true)); // true
     ```
-    JS:
+    -   JS:
     ```js
     const sudoku = require("createsudokupuzzle");
 
@@ -291,7 +297,7 @@ Generates a Sudoku puzzle with a specified number of blank cells.
     -   A 9x9 Sudoku grid with the specified number of blank cells.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -299,7 +305,7 @@ Generates a Sudoku puzzle with a specified number of blank cells.
 
     console.log(grid); // [[6, 5, 9, 8, 0, 0, 2, 3, 7], [4, 2, 0, 0, 0, 7, 8, 0, 9], [0, 8, 3, 9, 6, 2, 0, 0, 5], [2, 4, 0, 7, 3, 9, 0, 1, 6], [0, 0, 0, 6, 0, 4, 0, 2, 8], [3, 1, 6, 2, 8, 0, 9, 7, 4], [5, 0, 7, 0, 0, 6, 0, 0, 2], [0, 0, 0, 5, 2, 0, 7, 0, 1], [0, 0, 2, 4, 7, 8, 6, 0, 3]];
     ```
-    JS:
+    -   JS:
     ```js
     const sudoku = require("createsudokupuzzle");
 
@@ -327,7 +333,7 @@ Solves a Sudoku puzzle using backtracking.
     -   A solved 9x9 Sudoku grid.
 
 -   **Example**:
-    TS:
+    -   TS:
     ```ts
     import * as sudoku from "createsudokupuzzle";
 
@@ -346,7 +352,7 @@ Solves a Sudoku puzzle using backtracking.
     const solved = sudoku.solve(puzzle);
     console.log(solved);
     ```
-    JS:
+    -   JS:
     ```js
     const sudoku = require("createsudokupuzzle");
 

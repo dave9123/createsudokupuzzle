@@ -52,14 +52,30 @@ export function findAllEmpty(grid: Array<Array<number>>): [number, number][] {
  * @param row - The row index.
  * @param col - The column index.
  * @param num - The number to place.
- * @returns True if valid, false otherwise.
+ * @param outputReason - Whether to output the reason for invalid placement.
+ * @returns If outputReason is undefined or false, it'll return boolean, else an object with `valid` indicating if the placement is valid and `reason` providing the reason if invalid.
  */
-export function validatePlacement(grid: Array<Array<number>>, row: number, col: number, num: number): boolean {
+export function validatePlacement(grid: Array<Array<number>>, row: number, col: number, num: number, outputReason: boolean = false): { valid: boolean, reason?: string } | boolean {
     const boxRow = Math.floor(row / 3) * 3;
     const boxCol = Math.floor(col / 3) * 3;
-    return !grid[row].includes(num) &&
-           !grid.some((r) => r[col] === num) &&
-           !grid.slice(boxRow, boxRow + 3).some((r) => r.slice(boxCol, boxCol + 3).includes(num));
+
+    if (grid[row].includes(num)) {
+        const reason = `Number ${num} already exists in row ${row}`;
+        if (outputReason) return { valid: false, reason };
+        return false;
+    }
+    if (grid.some((r) => r[col] === num)) {
+        const reason = `Number ${num} already exists in column ${col}`;
+        if (outputReason) return { valid: false, reason };
+        return false;
+    }
+    if (grid.slice(boxRow, boxRow + 3).some((r) => r.slice(boxCol, boxCol + 3).includes(num))) {
+        const reason = `Number ${num} already exists in box starting at (${boxRow}, ${boxCol})`;
+        if (outputReason) return { valid: false, reason };
+        return false;
+    }
+    if (outputReason) return { valid: true };
+    return true;
 }
 
 /**

@@ -423,4 +423,4 @@ console.log("Is setting [0][0] to 1 valid?", sudoku.validatePlacement(solution, 
 
 ## License
 
-This project is licensed under the GPLv3 License.
+This project is licensed under the MIT License.

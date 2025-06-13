@@ -1,7 +1,6 @@
 # createsudokupuzzle
 
-[![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)]()
-[![NPM Version](https://img.shields.io/npm/l/createsudokupuzzle.svg?style=flat)](https://github.com/dave9123/createsudokupuzzle/blob/main/LICENSE)
+[![License](https://img.shields.io/npm/l/createsudokupuzzle.svg?style=flat)](https://github.com/dave9123/createsudokupuzzle/blob/main/LICENSE)
 
 Generate, validate, and solve Sudoku puzzles easily!
 

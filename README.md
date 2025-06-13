@@ -12,7 +12,7 @@ Generate, validate, and solve Sudoku puzzles easily!
 -   [Installation](#installation)
 -   [Functions](#functions)
     -   [findFirstEmpty](#findfirstempty)
-    -   [findAllEpty](#findallempty)
+    -   [findAllEmpty](#findallempty)
     -   [validatePlacement](#validateplacement)
     -   [validate](#validate)
     -   [generate](#generate)
